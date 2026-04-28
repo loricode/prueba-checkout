@@ -33,161 +33,163 @@ export const PaymentPage = () => {
                     </Typography>
 
                     <Container>
-
-                        <Card>
-                            <CardContent>
-
-                                <Grid>
-                                    <Grid>
-                                        <div>
-                                            I1
-                                        </div>
-                                    </Grid>
+                         <Grid sx={{display:'flex', flexDirection:'row', gap:'6px',}}>
+                       
+                            <Card>
+                                <CardContent>
 
                                     <Grid>
-
-                                        <Typography variant="h5" component="h5">
-                                            Informaciòn de pago
-                                        </Typography>
-
-                                        <Typography variant="h5" component="h5">
-                                            Ingresa los datos de tu tarjeta
-                                        </Typography>
-
-                                    </Grid>
-
-
-                                </Grid>
-
-                                <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-
-                                    <Grid>
-
-                                        <Typography sx={{textAlign:'start'}}>
-                                            Número de tarjeta
-                                        </Typography>
-
-                                        <TextField
-                                            fullWidth
-                                            sx={{ background: '#eae8e8' }}
-                                            slotProps={{
-                                                input: {
-                                                    endAdornment: <InputAdornment position="start">
-                                                        <AddCardIcon />
-                                                    </InputAdornment>,
-                                                },
-                                            }}
-                                            label="Número de tarjeta" variant="outlined" />
-                                    </Grid>
-
-                                      <Grid>
-
-
-                                        <Typography sx={{textAlign:'start'}}>
-                                            Nombre del titular
-                                        </Typography>
-
-                                        <TextField
-                                            fullWidth
-                                            sx={{ background: '#eae8e8' }}
-                                            label="Nombre del titular" variant="outlined" />
-
-                                    </Grid>
-
-
-                                    <Grid container sx={{gap:'4px'}}>
+                                        <Grid>
+                                            <div>
+                                                I1
+                                            </div>
+                                        </Grid>
 
                                         <Grid>
 
-                                            <Typography sx={{textAlign:'start'}}>
-                                                vencimiento
+                                            <Typography variant="h5" component="h5">
+                                                Informaciòn de pago
+                                            </Typography>
+
+                                            <Typography variant="h5" component="h5">
+                                                Ingresa los datos de tu tarjeta
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                    </Grid>
+
+                                    <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+
+                                        <Grid>
+
+                                            <Typography sx={{ textAlign: 'start' }}>
+                                                Número de tarjeta
                                             </Typography>
 
                                             <TextField
                                                 fullWidth
                                                 sx={{ background: '#eae8e8' }}
-                                                label="Vencimiento" variant="outlined" />
+                                                slotProps={{
+                                                    input: {
+                                                        endAdornment: <InputAdornment position="start">
+                                                            <AddCardIcon />
+                                                        </InputAdornment>,
+                                                    },
+                                                }}
+                                                label="Número de tarjeta" variant="outlined" />
                                         </Grid>
 
                                         <Grid>
 
-                                            <Typography sx={{textAlign:'start'}}>
-                                                CCV
+
+                                            <Typography sx={{ textAlign: 'start' }}>
+                                                Nombre del titular
                                             </Typography>
 
                                             <TextField
                                                 fullWidth
                                                 sx={{ background: '#eae8e8' }}
-                                                label="CCV" variant="outlined" />
+                                                label="Nombre del titular" variant="outlined" />
+
+                                        </Grid>
+
+
+                                        <Grid container sx={{ gap: '4px' }}>
+
+                                            <Grid>
+
+                                                <Typography sx={{ textAlign: 'start' }}>
+                                                    vencimiento
+                                                </Typography>
+
+                                                <TextField
+                                                    fullWidth
+                                                    sx={{ background: '#eae8e8' }}
+                                                    label="Vencimiento" variant="outlined" />
+                                            </Grid>
+
+                                            <Grid>
+
+                                                <Typography sx={{ textAlign: 'start' }}>
+                                                    CCV
+                                                </Typography>
+
+                                                <TextField
+                                                    fullWidth
+                                                    sx={{ background: '#eae8e8' }}
+                                                    label="CCV" variant="outlined" />
+                                            </Grid>
+
+                                        </Grid>
+
+
+                                        <Grid sx={{ width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
+
+                                            <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+
+                                                <Grid>
+                                                    subtotal
+                                                </Grid>
+
+                                                <Grid>
+                                                    213423
+                                                </Grid>
+
+                                            </Grid>
+
+                                            <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+
+                                                <Grid>
+                                                    Iva(16%)
+                                                </Grid>
+
+                                                <Grid>
+                                                    213423
+                                                </Grid>
+
+                                            </Grid>
+
+                                            <Divider />
+
                                         </Grid>
 
                                     </Grid>
 
+                                </CardContent>
+                            </Card>
 
-                                    <Grid sx={{ width:'100%', background: '#eae8e8', borderRadius:'2%', padding:'4px' }}>
+                            <Card>
+                                <CardContent>
 
-                                        <Grid sx={{width:'100%', display:'flex', justifyContent:'space-between'}}>
+                                    <List dense={dense}>
+                                        {state.map((product) =>
+                                            <ListItem
+                                                key={product.id}
+                                                secondaryAction={
+                                                    <p aria-label="price" >
+                                                        {product.price}
+                                                    </p>
+                                                }
+                                            >
+                                                <ListItemAvatar>
+                                                    <Avatar>
+                                                        <FolderIcon />
+                                                    </Avatar>
+                                                </ListItemAvatar>
+                                                <ListItemText
+                                                    primary={product?.title}
+                                                    secondary={secondary ? 'Secondary text' : null}
+                                                />
+                                            </ListItem>,
+                                        )}
+                                    </List>
 
-                                          <Grid>
-                                            subtotal
-                                          </Grid>
+                                </CardContent>
+                            </Card>
 
-                                          <Grid>
-                                             213423
-                                          </Grid>
-
-                                        </Grid>
-
-                                        <Grid sx={{width:'100%', display:'flex', justifyContent:'space-between'}}>
-
-                                          <Grid>
-                                            Iva(16%)
-                                          </Grid>
-
-                                          <Grid>
-                                             213423
-                                          </Grid>
-
-                                        </Grid>
-
-                                        <Divider/>
-
-                                    </Grid>
-
-                                </Grid>
-
-                            </CardContent>
-                        </Card>
-
-                        <Card>
-                           <CardContent>
-                              
-                               <List dense={dense}>
-              { state.map((product) => 
-                <ListItem
-                 key={product.id}
-                  secondaryAction={
-                    <p aria-label="price" >
-                      {product.price}
-                    </p>
-                  }
-                >
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={product?.title}
-                    secondary={secondary ? 'Secondary text' : null}
-                  />
-                </ListItem>,
-              )}
-            </List>
-
-                           </CardContent>
-                        </Card>
-
+                        </Grid>
                     </Container>
 
                 </Container>
