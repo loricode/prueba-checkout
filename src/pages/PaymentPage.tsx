@@ -6,9 +6,8 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-import { Avatar, Divider, IconButton, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { Avatar, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import AddCardIcon from '@mui/icons-material/AddCard';
-import DeleteIcon from '@mui/icons-material/Delete'
 import FolderIcon from '@mui/icons-material/Folder'
 import { usePaymentPage } from './usePaymentPage';
 
@@ -33,25 +32,23 @@ export const PaymentPage = () => {
                     </Typography>
 
                     <Container>
-                         <Grid sx={{display:'flex', flexDirection:'row', gap:'6px',}}>
+                         <Grid sx={{display:'flex', flexDirection:'row', gap:'10px'}}>
                        
                             <Card>
                                 <CardContent>
 
-                                    <Grid>
+                                    <Grid sx={{display:'flex', mb:2, gap:2, alignItems:'center'}}>
                                         <Grid>
-                                            <div>
-                                                I1
-                                            </div>
+                                            <AddCardIcon/>
                                         </Grid>
 
                                         <Grid>
 
-                                            <Typography variant="h5" component="h5">
+                                            <Typography sx={{textAlign:'left'}} variant="subtitle1" component="p">
                                                 Informaciòn de pago
                                             </Typography>
 
-                                            <Typography variant="h5" component="h5">
+                                            <Typography sx={{textAlign:'left'}} variant="subtitle2" component="p">
                                                 Ingresa los datos de tu tarjeta
                                             </Typography>
 
@@ -62,7 +59,7 @@ export const PaymentPage = () => {
 
                                     <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
-                                        <Grid>
+                                        <Grid sx={{width:'100%'}}>
 
                                             <Typography sx={{ textAlign: 'start' }}>
                                                 Número de tarjeta
@@ -81,7 +78,7 @@ export const PaymentPage = () => {
                                                 label="Número de tarjeta" variant="outlined" />
                                         </Grid>
 
-                                        <Grid>
+                                        <Grid sx={{width:'100%'}}>
 
 
                                             <Typography sx={{ textAlign: 'start' }}>
@@ -96,7 +93,7 @@ export const PaymentPage = () => {
                                         </Grid>
 
 
-                                        <Grid container sx={{ gap: '4px' }}>
+                                        <Grid sx={{ display:'flex', gap: '4px' }}>
 
                                             <Grid>
 
@@ -125,9 +122,9 @@ export const PaymentPage = () => {
                                         </Grid>
 
 
-                                        <Grid sx={{ width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
+                                        <Grid sx={{ marginTop:'5px', width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
 
-                                            <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                                            <Grid sx={{ px:1, mt:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
 
                                                 <Grid>
                                                     subtotal
@@ -139,7 +136,7 @@ export const PaymentPage = () => {
 
                                             </Grid>
 
-                                            <Grid sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                                            <Grid sx={{ px:1, mb:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
 
                                                 <Grid>
                                                     Iva(16%)
@@ -152,6 +149,18 @@ export const PaymentPage = () => {
                                             </Grid>
 
                                             <Divider />
+
+                                            <Grid sx={{ p:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+
+                                                <Grid>
+                                                    Total a pagar
+                                                </Grid>
+
+                                                <Grid>
+                                                    {"aqui total"}
+                                                </Grid>
+
+                                            </Grid>
 
                                         </Grid>
 
