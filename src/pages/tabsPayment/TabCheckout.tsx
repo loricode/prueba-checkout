@@ -35,7 +35,7 @@ export const TabCheckout = (state: TabCheckoutProps) => {
         </Typography>
 
         <Container>
-            <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px', flexWrap:'wrap' }}>
+            <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
 
                 <Card>
                     <CardContent>
