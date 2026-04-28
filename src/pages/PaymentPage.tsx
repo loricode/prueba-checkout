@@ -6,10 +6,11 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-import { Avatar, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { Avatar, Button, CardActionArea, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import FolderIcon from '@mui/icons-material/Folder'
 import { usePaymentPage } from './usePaymentPage';
+import HttpsIcon from '@mui/icons-material/Https';
 
 export const PaymentPage = () => {
 
@@ -166,7 +167,17 @@ export const PaymentPage = () => {
 
                                     </Grid>
 
+
+
                                 </CardContent>
+
+
+                                <CardActionArea sx={{px:2, mb:2}}>
+                                    <Button sx={{background:"#000", color:'#FFF'}} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
+                                       Pagar
+                                    </Button>
+                                </CardActionArea>
+
                             </Card>
 
                             <Card>
