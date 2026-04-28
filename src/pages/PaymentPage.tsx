@@ -165,8 +165,9 @@ export const PaymentPage = () => {
                                <List dense={dense}>
               { state.map((product) => 
                 <ListItem
+                 key={product.id}
                   secondaryAction={
-                    <p aria-label="price">
+                    <p aria-label="price" >
                       {product.price}
                     </p>
                   }
