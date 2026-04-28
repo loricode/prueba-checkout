@@ -5,214 +5,121 @@ import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
-import TextField from '@mui/material/TextField';
-import { Avatar, Button, CardActionArea, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-import AddCardIcon from '@mui/icons-material/AddCard';
+import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemText, Tab, Tabs } from '@mui/material';
+
 import FolderIcon from '@mui/icons-material/Folder'
 import { usePaymentPage } from './usePaymentPage';
-import HttpsIcon from '@mui/icons-material/Https';
+import { TabCheckout } from './tabsPayment/TabCheckout';
+
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        </div>
+    );
+}
+
+function a11yProps(index: number) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
 
 export const PaymentPage = () => {
 
-    const [dense, setDense] = useState(false);
-    const [secondary, setSecondary] = useState(false);
-    const { state } = usePaymentPage();
+    const { state, value, handleChange } = usePaymentPage();
 
     return (
         <>
             <div>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tab label="Wallet Dashboard" {...a11yProps(0)} />
+                        <Tab label="Checkout" {...a11yProps(1)} />
+                    </Tabs>
+                </Box>
 
-                <Container>
-
-                    <Typography variant="h3" component="h3">
-                        Checkout
-                    </Typography>
-
-                    <Typography variant="h5" component="h5">
-                        Completa tu compra de forma segura
-                    </Typography>
-
+                <CustomTabPanel value={value} index={0}>
                     <Container>
-                         <Grid sx={{display:'flex', flexDirection:'row', gap:'10px'}}>
-                       
-                            <Card>
-                                <CardContent>
 
-                                    <Grid sx={{display:'flex', mb:2, gap:2, alignItems:'center'}}>
-                                        <Grid>
-                                            <AddCardIcon/>
-                                        </Grid>
+                        <Typography variant="h3" component="h3">
+                            Wallet Dashboard
+                        </Typography>
 
-                                        <Grid>
+                        <Typography variant="h5" component="h5">
+                            Gestiona tus finanzas y transacciones
+                        </Typography>
 
-                                            <Typography sx={{textAlign:'left'}} variant="subtitle1" component="p">
-                                                Informaciòn de pago
-                                            </Typography>
+                        <Container>
+                            <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
 
-                                            <Typography sx={{textAlign:'left'}} variant="subtitle2" component="p">
-                                                Ingresa los datos de tu tarjeta
-                                            </Typography>
+                                <Card>
+                                    <CardContent>
 
-                                        </Grid>
-
-
-                                    </Grid>
-
-                                    <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-
-                                        <Grid sx={{width:'100%'}}>
-
-                                            <Typography sx={{ textAlign: 'start' }}>
-                                                Número de tarjeta
-                                            </Typography>
-
-                                            <TextField
-                                                fullWidth
-                                                sx={{ background: '#eae8e8' }}
-                                                slotProps={{
-                                                    input: {
-                                                        endAdornment: <InputAdornment position="start">
-                                                            <AddCardIcon />
-                                                        </InputAdornment>,
-                                                    },
-                                                }}
-                                                label="Número de tarjeta" variant="outlined" />
-                                        </Grid>
-
-                                        <Grid sx={{width:'100%'}}>
-
-
-                                            <Typography sx={{ textAlign: 'start' }}>
-                                                Nombre del titular
-                                            </Typography>
-
-                                            <TextField
-                                                fullWidth
-                                                sx={{ background: '#eae8e8' }}
-                                                label="Nombre del titular" variant="outlined" />
-
-                                        </Grid>
-
-
-                                        <Grid sx={{ display:'flex', gap: '4px' }}>
+                                        <Grid sx={{ display: 'flex', mb: 2, gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
 
                                             <Grid>
-
-                                                <Typography sx={{ textAlign: 'start' }}>
-                                                    vencimiento
-                                                </Typography>
-
-                                                <TextField
-                                                    fullWidth
-                                                    sx={{ background: '#eae8e8' }}
-                                                    label="Vencimiento" variant="outlined" />
+                                                Balance total
                                             </Grid>
 
-                                            <Grid>
+                                            <Grid sx={{ display: 'flex', gap: 2 }}>
 
-                                                <Typography sx={{ textAlign: 'start' }}>
-                                                    CCV
-                                                </Typography>
 
-                                                <TextField
-                                                    fullWidth
-                                                    sx={{ background: '#eae8e8' }}
-                                                    label="CCV" variant="outlined" />
+
                                             </Grid>
+
 
                                         </Grid>
 
+                                        <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
-                                        <Grid sx={{ marginTop:'5px', width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
-
-                                            <Grid sx={{ px:1, mt:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-
-                                                <Grid>
-                                                    subtotal
-                                                </Grid>
-
-                                                <Grid>
-                                                    213423
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <Grid sx={{ px:1, mb:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-
-                                                <Grid>
-                                                    Iva(16%)
-                                                </Grid>
-
-                                                <Grid>
-                                                    213423
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <Divider />
-
-                                            <Grid sx={{ p:1, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-
-                                                <Grid>
-                                                    Total a pagar
-                                                </Grid>
-
-                                                <Grid>
-                                                    {"aqui total"}
-                                                </Grid>
+                                            <Grid sx={{ marginTop: '5px', width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
 
                                             </Grid>
 
                                         </Grid>
 
-                                    </Grid>
+                                    </CardContent>
 
+                                </Card>
 
+                                <Card>
+                                    <CardContent>
 
-                                </CardContent>
+                                    </CardContent>
+                                </Card>
 
+                            </Grid>
+                        </Container>
 
-                                <CardActionArea sx={{px:2, mb:2}}>
-                                    <Button sx={{background:"#000", color:'#FFF'}} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
-                                       Pagar
-                                    </Button>
-                                </CardActionArea>
-
-                            </Card>
-
-                            <Card>
-                                <CardContent>
-
-                                    <List dense={dense}>
-                                        {state.map((product) =>
-                                            <ListItem
-                                                key={product.id}
-                                                secondaryAction={
-                                                    <p aria-label="price" >
-                                                        {product.price}
-                                                    </p>
-                                                }
-                                            >
-                                                <ListItemAvatar>
-                                                    <Avatar>
-                                                        <FolderIcon />
-                                                    </Avatar>
-                                                </ListItemAvatar>
-                                                <ListItemText
-                                                    primary={product?.title}
-                                                    secondary={secondary ? 'Secondary text' : null}
-                                                />
-                                            </ListItem>,
-                                        )}
-                                    </List>
-
-                                </CardContent>
-                            </Card>
-
-                        </Grid>
                     </Container>
+                </CustomTabPanel>
 
-                </Container>
+                <CustomTabPanel value={value} index={1}>
+                    <TabCheckout
+                        total={state.total}
+                        subtotal={state.subtotal}
+                        products={
+                            state.products
+                        } />
+                </CustomTabPanel>
+
 
             </div>
 
