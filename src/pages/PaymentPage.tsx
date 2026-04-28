@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import Typography from '@mui/material/Typography';
-
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
-import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemText, Tab, Tabs } from '@mui/material';
-
-import FolderIcon from '@mui/icons-material/Folder'
+import { Box, Tab, Tabs } from '@mui/material';
 import { usePaymentPage } from './usePaymentPage';
 import { TabCheckout } from './tabsPayment/TabCheckout';
 
