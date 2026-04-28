@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-import { Avatar, Button, CardActionArea, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, Tab, Tabs } from '@mui/material';
+import { Avatar, Button, Box, CardActionArea, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, Tab, Tabs } from '@mui/material';
 
 import HttpsIcon from '@mui/icons-material/Https';
 import AddCardIcon from '@mui/icons-material/AddCard';
@@ -169,8 +169,6 @@ export const TabCheckout = (state: TabCheckoutProps) => {
 
                         </Grid>
 
-
-
                     </CardContent>
 
 
@@ -178,6 +176,10 @@ export const TabCheckout = (state: TabCheckoutProps) => {
                         <Button sx={{ background: "#000", color: '#FFF' }} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
                             Pagar
                         </Button>
+                         <Box sx={{display:'flex', color:'#a9a9a9', mt:1, gap:1, justifyContent:'center', alignItems:'center'}}>
+                            <HttpsIcon sx={{color:'#a9a9a9'}}/>
+                             Pago seguro encriptado
+                        </Box>
                     </CardActionArea>
 
                 </Card>
