@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 
 import Container from '@mui/material/Container';
@@ -5,15 +6,20 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
+import { Avatar, Divider, IconButton, InputAdornment, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import AddCardIcon from '@mui/icons-material/AddCard';
-
+import DeleteIcon from '@mui/icons-material/Delete'
+import FolderIcon from '@mui/icons-material/Folder'
+import { usePaymentPage } from './usePaymentPage';
 
 export const PaymentPage = () => {
 
+    const [dense, setDense] = useState(false);
+    const [secondary, setSecondary] = useState(false);
+    const { state } = usePaymentPage();
+
     return (
         <>
-
             <div>
 
                 <Container>
@@ -118,9 +124,9 @@ export const PaymentPage = () => {
                                     </Grid>
 
 
-                                    <Grid sx={{ width:'100%', background: '#eae8e8', borderRadius:'10%' }}>
+                                    <Grid sx={{ width:'100%', background: '#eae8e8', borderRadius:'2%', padding:'4px' }}>
 
-                                        <Grid sx={{display:'flex', justifyContent:'space-between'}}>
+                                        <Grid sx={{width:'100%', display:'flex', justifyContent:'space-between'}}>
 
                                           <Grid>
                                             subtotal
@@ -132,7 +138,7 @@ export const PaymentPage = () => {
 
                                         </Grid>
 
-                                        <Grid sx={{justifyContent:'space-between'}}>
+                                        <Grid sx={{width:'100%', display:'flex', justifyContent:'space-between'}}>
 
                                           <Grid>
                                             Iva(16%)
@@ -144,23 +150,44 @@ export const PaymentPage = () => {
 
                                         </Grid>
 
+                                        <Divider/>
+
                                     </Grid>
 
-
-                                  
                                 </Grid>
 
                             </CardContent>
                         </Card>
 
                         <Card>
+                           <CardContent>
+                              
+                               <List dense={dense}>
+              { state.map((product) => 
+                <ListItem
+                  secondaryAction={
+                    <p aria-label="price">
+                      {product.price}
+                    </p>
+                  }
+                >
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={product?.title}
+                    secondary={secondary ? 'Secondary text' : null}
+                  />
+                </ListItem>,
+              )}
+            </List>
 
+                           </CardContent>
                         </Card>
 
                     </Container>
-
-
-
 
                 </Container>
 
