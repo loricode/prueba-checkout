@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
-import { TabCheckout } from './tabsPayment/TabCheckout';
-import { TabWallet } from './tabsPayment/TabWallet';
+import { TabCheckout } from './tabsPayment/checkout/TabCheckout';
+import { TabWallet } from './tabsPayment/wallet/TabWallet';
 
 interface TabPanelProps {
     children?: React.ReactNode;

@@ -1,60 +1,49 @@
-import { useState } from 'react';
-
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import CardContent from '@mui/material/CardContent';
-import TextField from '@mui/material/TextField';
-import { Avatar, Button, Box, CardActionArea, Divider, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, Tab, Tabs } from '@mui/material';
+import {
+    Avatar,
+    Button,
+    Box,
+    Card,
+    CardContent,
+    CardActions,
+    Container,
+    Divider,
+    Grid,
+    InputAdornment,
+    List,
+    ListItem, ListItemAvatar, ListItemText, TextField, Typography
+} from '@mui/material';
 
 import HttpsIcon from '@mui/icons-material/Https';
 import AddCardIcon from '@mui/icons-material/AddCard';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FolderIcon from '@mui/icons-material/Folder';
-import { usePaymentPage } from '../usePaymentPage';
+import { HeaderComponent } from '../../../../components/header/HeaderComponent';
+import { CardHeaderComponent } from '../../../../components/header/CardHeaderComponent';
+
+import { useCheckout } from './useCheckout';
 
 
 export const TabCheckout = () => {
 
-    const [dense, setDense] = useState(false);
-    const [secondary, setSecondary] = useState(false);
-    const { state } = usePaymentPage();
+    const { state } = useCheckout();
 
     return (<Container>
 
-        <Typography variant="subtitle1"  component="p" sx={{ fontWeight:600, textAlign: 'left', fontSize:20 }}>
-            Checkout
-        </Typography>
+        <HeaderComponent
+            title={'Checkout'}
+            subtitle={'Completa tu compra de forma segura'}
+        />
 
-        <Typography variant="body2" component="p" sx={{ textAlign: 'left' }}>
-            Completa tu compra de forma segura
-        </Typography>
+        <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px', mt: 2, }}>
 
-
-        <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px', mt:2 }}>
-
-            <Card>
+            <Card sx={{ flexGrow: 1 }}>
                 <CardContent>
 
-                    <Grid sx={{ display: 'flex', mb: 2, gap: 2, alignItems: 'center' }}>
-                        <Grid>
-                            <AddCardIcon />
-                        </Grid>
-
-                        <Grid>
-
-                            <Typography sx={{ textAlign: 'left' }} variant="subtitle1" component="p">
-                                Informaciòn de pago
-                            </Typography>
-
-                            <Typography sx={{ textAlign: 'left' }} variant="subtitle2" component="p">
-                                Ingresa los datos de tu tarjeta
-                            </Typography>
-
-                        </Grid>
-
-
-                    </Grid>
+                    <CardHeaderComponent
+                        icon={<AddCardIcon />}
+                        title={'Informaciòn de pago'}
+                        subtitle={'Ingresa los datos de tu tarjeta'}
+                    />
 
                     <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
@@ -167,23 +156,29 @@ export const TabCheckout = () => {
 
                 </CardContent>
 
-
-                <CardActionArea sx={{ px: 2, mb: 2 }}>
+                <CardActions sx={{ px: 2 }}>
                     <Button sx={{ background: "#000", color: '#FFF' }} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
                         Pagar
                     </Button>
-                    <Box sx={{ display: 'flex', color: '#a9a9a9', mt: 1, gap: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <HttpsIcon sx={{ color: '#a9a9a9' }} />
-                        Pago seguro encriptado
-                    </Box>
-                </CardActionArea>
+                </CardActions>
+
+                <Box sx={{ display: 'flex', color: '#a9a9a9', mb: 2, gap: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <HttpsIcon sx={{ color: '#a9a9a9' }} />
+                    Pago seguro encriptado
+                </Box>
 
             </Card>
 
-            <Card>
+            <Card sx={{ minWidth: '50%' }}>
                 <CardContent>
 
-                    <List dense={dense}>
+                     <CardHeaderComponent
+                        icon={<AddShoppingCartIcon />}
+                        title={'Resumen del pedido'}
+                        subtitle={ state.products.length > 1 ? state.products.length + ' productos' : '0 producto'}
+                    />
+
+                    <List sx={{ width: '100%' }} dense={true}>
                         {state.products.map((product) =>
                             <ListItem
                                 key={product.id}
@@ -200,7 +195,6 @@ export const TabCheckout = () => {
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={product?.title}
-                                    secondary={secondary ? 'Secondary text' : null}
                                 />
                             </ListItem>,
                         )}

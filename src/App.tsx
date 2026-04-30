@@ -1,5 +1,5 @@
 import './App.css'
-import { PaymentPage } from './pages/PaymentPage';
+import { PaymentPage } from './pages/payment/PaymentPage';
 
 function App() {
 

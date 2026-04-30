@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getProducts } from '../service/productService';
-import type { Product } from '../interfaces/product';
+import { getProducts } from '../../../../service/productService';
+import type { Product } from '../../../../interfaces/product';
 
 type Payment = {
     subtotal: number;
@@ -8,7 +8,7 @@ type Payment = {
     total: number;
 }
 
-export const usePaymentPage = () => {
+export const useCheckout = () => {
     
     const [state, setState] = useState<Payment>({ total: 0, subtotal: 0, products: [] });
 
