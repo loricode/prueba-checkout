@@ -44,8 +44,8 @@ export const PaymentPage = () => {
             <div>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Wallet Dashboard" {...a11yProps(0)} />
-                        <Tab label="Checkout" {...a11yProps(1)} />
+                        <Tab sx={{textTransform:'capitalize'}} label="Wallet Dashboard" {...a11yProps(0)} />
+                        <Tab sx={{textTransform:'capitalize'}} label="Checkout" {...a11yProps(1)} />
                     </Tabs>
                 </Box>
 

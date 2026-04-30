@@ -157,7 +157,7 @@ export const TabCheckout = () => {
                 </CardContent>
 
                 <CardActions sx={{ px: 2 }}>
-                    <Button sx={{ background: "#000", color: '#FFF' }} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
+                    <Button sx={{ textTransform:'capitalize', background: "#000", color: '#FFF' }} fullWidth variant="outlined" startIcon={<HttpsIcon />}>
                         Pagar
                     </Button>
                 </CardActions>
@@ -189,12 +189,14 @@ export const TabCheckout = () => {
                                 }
                             >
                                 <ListItemAvatar>
-                                    <Avatar>
-                                        <FolderIcon />
-                                    </Avatar>
+                                    <img width={40} src={product.image
+                                    } alt={product.id}>
+                                    </img>
+                                    
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={product?.title}
+                                    secondary={"Cantidad " + product.id}
                                 />
                             </ListItem>,
                         )}
