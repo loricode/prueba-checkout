@@ -16,7 +16,6 @@ import {
 import HttpsIcon from '@mui/icons-material/Https';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FolderIcon from '@mui/icons-material/Folder';
 import { HeaderComponent } from '../../../../components/header/HeaderComponent';
 import { CardHeaderComponent } from '../../../../components/header/CardHeaderComponent';
 
