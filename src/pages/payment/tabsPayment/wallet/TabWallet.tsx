@@ -1,5 +1,7 @@
-import { Card, CardContent, Container, Grid } from '@mui/material';
+import { Box, Card, CardContent, Container, Grid, TextField, Typography } from '@mui/material';
 import { HeaderComponent } from '../../../../components/header/HeaderComponent';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import SouthWestIcon from '@mui/icons-material/SouthWest';
 
 export const TabWallet = () => {
 
@@ -11,45 +13,120 @@ export const TabWallet = () => {
                 subtitle={'Gestiona tus finanzas y transacciones'}
             />
 
-                <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+            <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
 
-                    <Card>
-                        <CardContent>
+                <Card sx={{ background: '#070214', minWidth: '70%' }}>
+                    <CardContent>
 
-                            <Grid sx={{ display: 'flex', mb: 2, gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
+                        <Grid sx={{ display: 'flex', mb: 2, gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
 
-                                <Grid>
-                                    Balance total
-                                </Grid>
+                            <Grid>
+                                Balance total
+                            </Grid>
 
-                                <Grid sx={{ display: 'flex', gap: 2 }}>
+                            <Grid sx={{ display: 'flex', gap: 1 }}>
 
+                                <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '8%', p: 1, background: 'rgba(255, 255, 255, .15)' }}>
+                                    <ArrowOutwardIcon fontSize='small' />
+                                </Box>
 
-
-                                </Grid>
-
+                                <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '8%', p: 1, background: 'rgba(255, 255, 255, .15)' }}>
+                                    <SouthWestIcon fontSize='small' />
+                                </Box>
 
                             </Grid>
 
-                            <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
-                                <Grid sx={{ marginTop: '5px', width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
+                        </Grid>
 
-                                </Grid>
+                        <Typography sx={{ color: '#FFF', textAlign: 'start' }}>
+                            USD
+                        </Typography>
 
+
+                        <Typography sx={{ color: '#FFF', textAlign: 'start' }}>
+                            {new Intl.NumberFormat("es-ES", {  currency: "USD", 
+ minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+
+                            }).format(
+                                15431.65,
+                            )}
+                        </Typography>
+
+
+                    </CardContent>
+
+                </Card>
+
+                <Card>
+                    <CardContent>
+
+ <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+
+                        <Grid sx={{ width: '100%' }}>
+
+                            <Typography sx={{ textAlign: 'start' }}>
+                                Destinatario
+                            </Typography>
+
+                            <TextField
+                                fullWidth
+                                sx={{ background: '#eae8e8' }}
+                                variant="outlined" />
+                        </Grid>
+
+                        <Grid sx={{ width: '100%' }}>
+
+
+                            <Typography sx={{ textAlign: 'start' }}>
+                                Nombre del titular
+                            </Typography>
+
+                            <TextField
+                                fullWidth
+                                sx={{ background: '#eae8e8' }}
+                                variant="outlined" />
+
+                        </Grid>
+
+
+                        <Grid sx={{ display: 'flex', gap: '4px' }}>
+
+                            <Grid>
+
+                                <Typography sx={{ textAlign: 'start' }}>
+                                    vencimiento
+                                </Typography>
+
+                                <TextField
+                                    fullWidth
+                                    sx={{ background: '#eae8e8' }}
+                                    label="Vencimiento" variant="outlined" />
                             </Grid>
 
-                        </CardContent>
+                            <Grid>
 
-                    </Card>
+                                <Typography sx={{ textAlign: 'start' }}>
+                                    CCV
+                                </Typography>
 
-                    <Card>
-                        <CardContent>
+                                <TextField
+                                    fullWidth
+                                    sx={{ background: '#eae8e8' }}
+                                    label="CCV" variant="outlined" />
+                            </Grid>
 
-                        </CardContent>
-                    </Card>
+                        </Grid>
 
-                </Grid>
+
+
+                    </Grid>
+
+                    </CardContent>
+                </Card>
+
+            </Grid>
 
         </Container>
     )

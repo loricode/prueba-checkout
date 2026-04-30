@@ -63,7 +63,7 @@ export const TabCheckout = () => {
                                         </InputAdornment>,
                                     },
                                 }}
-                                label="Número de tarjeta" variant="outlined" />
+                                variant="outlined" />
                         </Grid>
 
                         <Grid sx={{ width: '100%' }}>
@@ -76,7 +76,7 @@ export const TabCheckout = () => {
                             <TextField
                                 fullWidth
                                 sx={{ background: '#eae8e8' }}
-                                label="Nombre del titular" variant="outlined" />
+                                variant="outlined" />
 
                         </Grid>
 
@@ -86,13 +86,13 @@ export const TabCheckout = () => {
                             <Grid>
 
                                 <Typography sx={{ textAlign: 'start' }}>
-                                    vencimiento
+                                    Vencimiento
                                 </Typography>
 
                                 <TextField
                                     fullWidth
                                     sx={{ background: '#eae8e8' }}
-                                    label="Vencimiento" variant="outlined" />
+                                    variant="outlined" />
                             </Grid>
 
                             <Grid>
@@ -104,7 +104,7 @@ export const TabCheckout = () => {
                                 <TextField
                                     fullWidth
                                     sx={{ background: '#eae8e8' }}
-                                    label="CCV" variant="outlined" />
+                                    variant="outlined" />
                             </Grid>
 
                         </Grid>
