@@ -1,12 +1,7 @@
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import CardContent from '@mui/material/CardContent';
+import { useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
-import { usePaymentPage } from './usePaymentPage';
 import { TabCheckout } from './tabsPayment/TabCheckout';
-
+import { TabWallet } from './tabsPayment/TabWallet';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -38,8 +33,11 @@ function a11yProps(index: number) {
 }
 
 export const PaymentPage = () => {
+    const [value, setValue] = useState(0);
 
-    const { state, value, handleChange } = usePaymentPage();
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
+    };
 
     return (
         <>
@@ -52,70 +50,12 @@ export const PaymentPage = () => {
                 </Box>
 
                 <CustomTabPanel value={value} index={0}>
-                    <Container>
-
-                        <Typography variant="h3" component="h3">
-                            Wallet Dashboard
-                        </Typography>
-
-                        <Typography variant="h5" component="h5">
-                            Gestiona tus finanzas y transacciones
-                        </Typography>
-
-                        <Container>
-                            <Grid sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-
-                                <Card>
-                                    <CardContent>
-
-                                        <Grid sx={{ display: 'flex', mb: 2, gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
-
-                                            <Grid>
-                                                Balance total
-                                            </Grid>
-
-                                            <Grid sx={{ display: 'flex', gap: 2 }}>
-
-
-
-                                            </Grid>
-
-
-                                        </Grid>
-
-                                        <Grid container sx={{ dispay: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-
-                                            <Grid sx={{ marginTop: '5px', width: '100%', background: '#eae8e8', borderRadius: '2%', padding: '4px' }}>
-
-                                            </Grid>
-
-                                        </Grid>
-
-                                    </CardContent>
-
-                                </Card>
-
-                                <Card>
-                                    <CardContent>
-
-                                    </CardContent>
-                                </Card>
-
-                            </Grid>
-                        </Container>
-
-                    </Container>
+                    <TabWallet/>
                 </CustomTabPanel>
 
                 <CustomTabPanel value={value} index={1}>
-                    <TabCheckout
-                        total={state.total}
-                        subtotal={state.subtotal}
-                        products={
-                            state.products
-                        } />
+                    <TabCheckout/>
                 </CustomTabPanel>
-
 
             </div>
 

@@ -9,7 +9,7 @@ type Payment = {
 }
 
 export const usePaymentPage = () => {
-    const [value, setValue] = useState(0);
+    
     const [state, setState] = useState<Payment>({ total: 0, subtotal: 0, products: [] });
 
     useEffect(() => {
@@ -30,14 +30,10 @@ export const usePaymentPage = () => {
         setState(prev => ({ ...prev, subtotal, total, products }));
     }
 
-     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
+    
 
 
     return {
-        value,
-        handleChange,
         state
     }
 
